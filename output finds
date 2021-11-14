@@ -1,0 +1,17 @@
+The Given Training Data Set 
+
+['sunny', 'warm', 'normal', 'strong', 'warm', 'same', 'yes']
+['sunny ', 'warm', 'high', 'strong', 'warm', 'same', 'yes']
+['rainy', 'cold', 'high', 'strong', 'warm', 'change', 'no ']
+['sunny ', 'warm', 'high', 'strong', 'cool', 'change', 'yes']
+
+ The initial value of hypothesis: 
+['0', '0', '0', '0', '0', '0']
+
+ Find S: Finding a Maximally Specific Hypothesis
+
+ For Training instance No:3 the hypothesis is ['?', 'warm', '?', 'strong', '?', '?']
+
+ The Maximally Specific Hypothesis for a given TrainingExamples :
+
+['?', 'warm', '?', 'strong', '?', '?']
