@@ -1,33 +1,34 @@
 import csv
-num_attributes = 6
-print('in data set  attributes are',num_attributes)
 
-a = []
-print('\n the train data set is\n')
-
-with open('trainingdataa.csv','r') as csvfile:
-    reader = csv.reader(csvfile)
-    for row in reader:
-        a.append(row)
-        print(row)
+with open("C:/Users/SHARANBASAVA_JNV/Downloads/trainingdataa.csv") as f:
+    csv_file=csv.reader(f)
+    data=list(csv_file)
+    
+    s=data[1][:-1]
+    g=[['?' for i in range(len(s))] for j in range(len(s))]
+    
+    for i in data:
+        if i[-1]=="Yes":
+            for j in range(len(s)):
+                if i[j]!=s[j]:
+                    s[j]='?'
+                    g[j][j]='?'
         
-print('\n the initital value of hypothesis is ')
-hypothesis =['0']*num_attributes
-print(hypothesis)
+        elif i[-1]=="No":
+            for j in range(len(s)):
+                if i[j]!=s[j]:
+                    g[j][j]=s[j]
+                else:
+                    g[j][j]="?"
+        print("\nSteps of Candidate Elimination Algorithm",data.index(i)+1)
+        print(s)
+        print(g)
+    gh=[]
+    for i in g:
+        for j in i:
+            if j!='?':
+                gh.append(i)
+                break
+    print("\nFinal specific hypothesis:\n",s)
 
-for j in range(0,num_attributes):
-    hypothesis[j] = a[0][j]
-
-print("\n find S : finding maximaly psecific hypothesis is :\n")
-
-for i in range(0,len(a)):
-    if a[i][num_attributes]=='yes':
-        for j in range(0,num_attributes):
-            if a[i][j]!=hypothesis[j]:
-                hypothesis[j]='?'
-            else:
-                hypothesis[j]=a[i][j]
-print("for training data set example no :(0)hypothesis is ",format(i),hypothesis)
-
-print("max hypothesis is :\n")
-print(hypothesis)
+    print("\nFinal general hypothesis:\n",gh)
