@@ -1,32 +1,23 @@
 import csv
 
-num_attributes = 6
-a = []
+h=['0'for i in range(6)]
+with open("trainingdata.csv") as f:
+    data=csv.reader(f)
+    data=list(data)
+    
+    print("The +ve examples are:")
+    for i in data:
+        if i[-1]=="Yes":
+            print(i)
+     
+    print("\nThe steps of Find-S Algo are:")
+    for i in data:
+        if i[-1]=="Yes":
+            for j in range(6):
+                if h[j]=='0':
+                    h[j]=i[j]
+                elif h[j]!=i[j]:
+                    h[j]='?'
+                    print(h)
 
-print("\n The Given Training Data Set \n")
-
-with open('C:/Users/SHARANBASAVA_JNV/Downloads/trainingdataa.csv', 'r') as csvfile:
-    reader = csv.reader(csvfile)
-    for row in reader:
-        a.append (row)
-        print(row)
-
-print("\n The initial value of hypothesis: ")
-hypothesis = ['0'] * num_attributes
-print(hypothesis)
-
-for j in range(0,num_attributes):
-    hypothesis[j] = a[0][j];
-print("\n Find S: Finding a Maximally Specific Hypothesis\n")
-
-for i in range(0,len(a)):
-    if a[i][num_attributes]=='yes':
-        for j in range(0,num_attributes):
-            if a[i][j]!=hypothesis[j]:
-                hypothesis[j]='?'
-            else :
-                hypothesis[j]= a[i][j]
-print(" For Training instance No:{0} the hypothesis is".format(i),hypothesis)
-
-print("\n The Maximally Specific Hypothesis for a given TrainingExamples :\n")
-print(hypothesis)
+    print("\nFinal specific hypothesis:\n",h)
